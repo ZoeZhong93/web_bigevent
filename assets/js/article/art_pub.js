@@ -74,9 +74,6 @@ $(function() {
         var fd = new FormData($(this)[0]);
         // 将文章的发布状态保存到formData中
         fd.append("state", art_state);
-        fd.forEach(function(v, k) {
-            console.log(k, v);
-        });
 
         // 将裁剪后的图片，输出为文件
         $image
@@ -88,9 +85,9 @@ $(function() {
                 // 得到文件对象后，进行后续的操作
                 // 将文件对象存储到fd中
                 fd.append("cover_img", blob);
+                // 发起ajax数据请求
+                publishArticle(fd);
             });
-        // 发起ajax数据请求
-        publishArticle(fd);
     });
 
     // 定义发布文章的方法
